@@ -1,0 +1,18 @@
+name: example of action validate image
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run EC Validator
+      uses: seanconroy2021/action-validate-image@main
+      with:
+        option: keyless
+        image: quay.io/lucarval/festoji:latest
+        identity: https:\/\/github\.com\/(slsa-framework\/slsa-github-generator|lcarva\/festoji)\/
+        issuer: https://token.actions.githubusercontent.com
