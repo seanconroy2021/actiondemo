@@ -12,7 +12,8 @@ jobs:
     - name: Run EC Validator
       uses: seanconroy2021/action-validate-image@main
       with:
-        option: keyless
-        image: quay.io/lucarval/festoji:latest
-        identity: https:\/\/github\.com\/(slsa-framework\/slsa-github-generator|lcarva\/festoji)\/
-        issuer: https://token.actions.githubusercontent.com
+        option: long-lived
+        image: quay.io/redhat-appstudio/ec-golden-image:latest
+        key: ${{ vars.PUBLICKEY }}
+        policy: github.com/enterprise-contract/config//slsa3
+
