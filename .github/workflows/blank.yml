@@ -1,19 +1,24 @@
-name: example of action validate image
+name: test for ec github action
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run EC Validator
-      uses: seanconroy2021/action-validate-image@main
+    - name: Run EC Validator (long-lived)
+      uses: enterprise-contract/action-validate-image@main
       with:
-        command: --ignore-rekor
-        image: quay.io/redhat-appstudio/ec-golden-image:latest
+        image: "quay.io/redhat-appstudio/ec-golden-image:latest"
         key: ${{ vars.PUBLICKEY }}
-        policy: github.com/enterprise-contract/config//slsa3
+        policy: "github.com/enterprise-contract/config//default"
+        extra-params: --ignore-rekor
 
+    - name: Run EC Validator (keyless)
+      uses: enterprise-contract/action-validate-image@main
+      with:
+        image: quay.io/lucarval/festoji:latest
+        identity: https:\/\/github\.com\/(slsa-framework\/slsa-github-generator|lcarva\/festoji)\/
+        issuer: https://token.actions.githubusercontent.com
