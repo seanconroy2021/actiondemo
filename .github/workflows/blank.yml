@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Run EC Validator (long-lived)
-      uses: enterprise-contract/action-validate-image@main
+      uses: enterprise-contract/action-validate-image@misc-whitespace-and-consistency-fixups
       with:
         image: "quay.io/redhat-appstudio/ec-golden-image:latest"
         key: ${{ vars.PUBLICKEY }}
@@ -17,7 +17,7 @@ jobs:
         extra-params: --ignore-rekor
 
     - name: Run EC Validator (keyless)
-      uses: enterprise-contract/action-validate-image@main
+      uses: simonbaird/action-validate-image@main
       with:
         image: quay.io/lucarval/festoji:latest
         identity: https:\/\/github\.com\/(slsa-framework\/slsa-github-generator|lcarva\/festoji)\/
