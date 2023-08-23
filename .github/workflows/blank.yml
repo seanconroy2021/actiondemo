@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Run EC Validator (long-lived)
-      uses: enterprise-contract/action-validate-image@misc-whitespace-and-consistency-fixups
+      uses: simonbarid/action-validate-image@misc-whitespace-and-consistency-fixups
       with:
         image: "quay.io/redhat-appstudio/ec-golden-image:latest"
         key: ${{ vars.PUBLICKEY }}
